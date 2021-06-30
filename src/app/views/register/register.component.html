@@ -114,10 +114,11 @@
   </div>
 
 </div>				                             -->
-
-<div class="container">
+<div style="height: 625px;" class="app-body p-5" >
+<div style="height: 470px;" class="container w-50 bg-white p-4 mt-5">
 <h2>Register</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<hr>
+<form class="" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="firstName">First Name</label>
         <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
@@ -155,4 +156,5 @@
         <a routerLink="" class="btn btn-link">Cancel</a>
     </div>
 </form>
+</div>
 </div>
