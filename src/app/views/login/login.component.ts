@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import { AlertService, AuthenticationService } from '../../_services';
 
 @Component({
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
+            email: ['', Validators.required],
             password: ['', Validators.required]
         });
 
@@ -39,7 +38,7 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
-    // convenience getter for easy access to form fields
+    // convenience getter for easy access to form fiel`ds
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
@@ -51,11 +50,10 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        this.authenticationService.login(this.f.email.value, this.f.password.value)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
-                    window.location.reload();
+                    this.router.navigate(['/home']);
                 },
                 error => {
                     alert(error);

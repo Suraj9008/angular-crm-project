@@ -19,7 +19,6 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { ForgotPasswordComponent } from './views/forgotPassword/forgot-password.component';
-import { fakeBackendProvider } from './_helpers';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -41,6 +40,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationService } from './_services';
+import { MapContactComponent } from './views/company/map-contact/map-contact.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    MapContactComponent,
   ],
   providers: [
     {
@@ -79,12 +81,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       useClass: HashLocationStrategy,
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        // provider used to create fake backend
-        fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    AuthenticationService
+    // provider used to create fake backend
   ],
   exports: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

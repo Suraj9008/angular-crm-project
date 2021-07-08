@@ -67,6 +67,7 @@
     "flag-icon-css": "^3.5.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
+    "libphonenumber-js": "^1.9.21",
     "ng-select2": "^1.2.5",
     "ng-uikit-pro-standard": "^1.0.0",
     "ng2-charts": "^2.4.2",
@@ -75,12 +76,14 @@
     "nvm": "0.0.4",
     "path": "^0.12.7",
     "rxjs": "^6.6.6",
+    "rxjs-compat": "^6.6.7",
     "select2": "^4.1.0-rc.0",
     "simple-line-icons": "^2.5.5",
     "ts-helpers": "^1.1.2",
     "tslib": "^2.0.0",
     "typescript": "~4.1.5",
     "web-animations-js": "^2.3.2",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {

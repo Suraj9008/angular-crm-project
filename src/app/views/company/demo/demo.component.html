@@ -1,38 +1,60 @@
-<div class="container">  
-    
-  <h1> Dynamically Add New Input Fields in Angular </h1>  
-    
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
-      
-    <p>  
-      <label for="name">Product Name:</label>  
-      <input type="text" id="name" name="name" formControlName="name" class="form-control">  
-    </p>  
-    
-    <table class="table table-bordered" formArrayName="quantities">  
-      <tr>  
-        <th colspan="2">Add Multiple Quantity:</th>  
-        <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>  
-      </tr>  
-      <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">  
-        <td>  
-            Quantity :  
-            <input type="text" formControlName="qty" class="form-control">  
-        </td>  
-        <td>  
-            Price:  
-            <input type="text" formControlName="price" class="form-control">  
-        </td>  
-        <td>  
-            <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>  
-        </td>  
-      </tr>  
-    </table>  
-     
-    <button type="submit" class="btn btn-success">Submit</button>  
-      
-  </form>  
-      
-  <br/>  
-  {{this.productForm.value | json}}  
+<div class="container bg-white p-5">
+  <div *ngIf="isExcelFile === false">
+    <p class="alert alert-danger" role="alert">This is not an Excel file</p>
+  </div>
+
+  <input type="file" class="form-control" #inputFile (change)="onFileChange($event)" />
+  <div id="output"></div>
+  <br>
+  <div *ngIf="willDownload">
+    <a id="download"> Download JSON File </a>
+  </div>
+  <hr>
 </div>
+<div>
+</div>
+
+
+<table class="table">
+  <thead>
+    <th>
+     <strong>Content type field</strong>
+    </th>
+    <th>
+      <strong>Custom</strong>
+     </th>
+     <th>
+      <strong>Webform Field</strong>
+     </th>
+     <th>
+      <strong>Custom Text</strong>
+     </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of addContact">
+      <td>
+        {{item}}
+      </td>
+      <td>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label for="">Custom</label>
+        </div>
+      </td>
+      <td>
+      <select class="form-select" #OptionValue (change)="saveData(OptionValue)" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option *ngFor="let key of JsonData.Sheet1[0] | keyvalue"  [value]="key.key">{{key.key}}</option>
+      </select>
+    </td>
+    <td>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+        <label for="floatingTextarea2">Comments</label>
+      </div>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary" >Save</button>

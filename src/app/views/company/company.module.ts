@@ -17,6 +17,9 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip'
 @NgModule({
   declarations: [
     AddCompanyComponent,
@@ -39,7 +42,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [TaxonomyService]
 })

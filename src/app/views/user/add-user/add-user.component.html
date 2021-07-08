@@ -47,12 +47,15 @@
             <div class="card-body form-group">
               <h3 class="fieldset-title">Contact Info</h3>
               <div class="form-group d-flex flex-row">
-                <div class="form-group p-2 w-50">
-                  <label class="control-label">Email</label>
-                  <div class="">
-                    <input type="email" class="form-control" value="Rebecca">
-                    <p class="help-block form-text">Enter Email Address</p>
-                  </div>
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">email is required</div>
+                    </div>
                 </div>
                 <div class="form-group p-2 w-50">
                   <label class="control-label">Mobile</label>
